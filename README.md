@@ -1,9 +1,15 @@
 # photoEssays
 photoEssays blog sw
 
+s3 bucket
+* via cloudflare?
+
 src/
 * for shared styles, js, etc
 * includes index.html template
+
+tools/
+* aws script to push files to s3 photoEssays bucket
 
 
 
