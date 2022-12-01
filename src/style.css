@@ -9,3 +9,22 @@ body {
     text-shadow: 2px 2px 5px #555;
 }
 
+
+.parallax {
+    /* Set a specific height */
+    min-height: 500px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallax h1 {
+    padding-top: 30pt;
+    font-size: 36pt;
+    color: #222;
+    text-align: center;
+    text-shadow: 2px 2px 5px #555;
+  }
+  
