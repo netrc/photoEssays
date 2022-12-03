@@ -37,6 +37,15 @@ const peTitle = (s,l) => {
   return s
 }
 
+const peEndTitle = (s,l) => { 
+  s.endPic = l.split(/\s+/)[1]
+  s.endUrl = `${s.url}/${s.endPic}`
+  let h = `<div class="peEndTitle" style="background-image: url(\'${s.endUrl}\');">\n`
+  h += '&nbsp; </div>\n\n'
+  s.html += h
+  return s 
+}
+
 
 const peText_finalize = s => {
   if (s.s2 == 'maybePhotoCaption') { // hit this immediately after pePhoto
@@ -88,7 +97,6 @@ const pePhoto = (s,l) => {
 const pePhotoThumbs = (s,l) => { return s }  // _pePhotoThumbs   p1.jpg ??short captio?? p2.jpg short caption
 const pePhotoCarousel = (s,l) => { return s }
 const peSidePic = (s,l) => { return s }  // like pePhoto, but with immedate text the side text, rest of line is pic caption
-const peEndTitle = (s,l) => { return s }
 
 const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peEndTitle }
 
@@ -113,14 +121,16 @@ const peParse = lArray => {
   return s
 }
 
-const peInit = async (scriptTag, divTag) => {
-  const peScriptEl = document.getElementById(scriptTag) // TODO: check for existence
-  const petext = peScriptEl.text
+const peInit = async (peFile, divTag) => {
   const divEl = document.getElementById(divTag) // TODO: check for existence
 
-  const peLines = petext.split('\n').map(s => s.trim())
+  const headers = {'Content-Type': 'text/plain'}
+  const peText = await fetch(peFile, { headers } ).then( r => r.text() ).catch(`can't fetch ${peFile}`)
+
+  const peLines = peText.split('\n').map(s => s.trim())
   const peParsed = peParse(peLines)
   divEl.innerHTML = peParsed.html
+
 }
 
 export { peInit }
