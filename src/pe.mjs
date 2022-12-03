@@ -133,4 +133,4 @@ const peInit = async (peFile, divTag) => {
 
 }
 
-export { peInit }
+export { peInit, peParse }
