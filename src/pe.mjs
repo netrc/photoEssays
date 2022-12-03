@@ -113,14 +113,14 @@ const peParse = lArray => {
   return s
 }
 
-const peInit = (scriptTag, divTag) => {
-    const peScriptEl = document.getElementById(scriptTag) // TODO: check for existence
-    const petext = peScriptEl.text
-    const divEl = document.getElementById(divTag) // TODO: check for existence
+const peInit = async (scriptTag, divTag) => {
+  const peScriptEl = document.getElementById(scriptTag) // TODO: check for existence
+  const petext = peScriptEl.text
+  const divEl = document.getElementById(divTag) // TODO: check for existence
 
-    const peLines = petext.split('\n').map(s => s.trim())
-    const peParsed = peParse(peLines)
-    divEl.innerHTML = peParsed.html
+  const peLines = petext.split('\n').map(s => s.trim())
+  const peParsed = peParse(peLines)
+  divEl.innerHTML = peParsed.html
 }
 
 export { peInit }
