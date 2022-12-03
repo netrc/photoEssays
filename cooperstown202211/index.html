@@ -6,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> NY Campbells </title>
     <link rel="stylesheet" href="../src/style.css">
-    <script src="../src/index.js"></script>
   </head>
   <body>
     
-  <div id="testdiv">
+  <div id="photoEssay">
   </div>
 
   <script id="peScript" type="text/plain">
@@ -43,25 +42,13 @@ The father did not see it; the son acknowledged it, not by another bow, but by r
 
 She hastened after her cousin, who had already disappeared through the curtains—curtains which smote one in the face, and seemed heavy with more than cloth. Beyond them stood the unreliable Signora, bowing good-evening to her guests, and supported by ’Enery, her little boy, and Victorier, her daughter. It made a curious little scene, this attempt of the Cockney to convey the grace and geniality of the South. And even more curious was the drawing-room, which attempted to rival the solid comfort of a Bloomsbury boarding-house. Was this really Italy?
   
+  <img src="https://netrc-pubcdn.s3.amazonaws.com/photoEssays/nycampbells2022/20221112_114545.jpg" /> 
   </script>
   
-  <img src="https://netrc-pubcdn.s3.amazonaws.com/photoEssays/nycampbells2022/20221112_114545.jpg" /> 
   
   <script type="module">
-/*
-    const peScriptEl = document.getElementById("peScript")
-    const petext = peScriptEl.text
-    const testdivEl = document.getElementById("testdiv")
-
-    import { peParse } from '../src/pe.mjs';
-    const peLines = petext.split('\n').map(s => s.trim())
-    const peParsed = peParse(peLines)
-    testdivEl.innerHTML = peParsed.html
-*/
     import { peInit } from '../src/pe.mjs';
-    peInit( 'peScript', 'testdiv' )
-    
-
+    peInit( 'peScript', 'photoEssay' )
   </script>
 
   </body>
