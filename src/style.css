@@ -1,12 +1,14 @@
 
 body {
     font-family: sans-serif;
-    background-color: #fffff8;
+    background-color: #fffff0;
+    margin: 0; /* to make sure image is wide as page */
 }
 
 .peTitle {
     /* Set a specific height */
     min-height: 500px; 
+
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -16,6 +18,7 @@ body {
   }
   .peTitle h1 {
     padding-top: 200pt;
+    margin-top: 0;  /* to make sure image fits to top */
     font-size: 36pt;
     color: #333;
     text-align: center;
@@ -24,8 +27,10 @@ body {
 
 .peEndTitle {
     /* Set a specific height */
-    min-height: 700px; 
-  
+     height: 800px;
+     width: 100%;
+
+
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -37,5 +42,6 @@ body {
   padding-top: 10pt;
   width: 60%;
   margin: auto;
+  color: #111;
 }
   
