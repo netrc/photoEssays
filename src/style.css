@@ -1,6 +1,7 @@
 
 body {
     font-family: sans-serif;
+    background-color: #fffff8;
 }
 
 .peTitle {
@@ -13,8 +14,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  h1 {
-    padding-top: 30pt;
+  .peTitle h1 {
+    padding-top: 200pt;
     font-size: 36pt;
     color: #333;
     text-align: center;
@@ -23,7 +24,7 @@ body {
 
 .peEndTitle {
     /* Set a specific height */
-    min-height: 500px; 
+    min-height: 700px; 
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -33,6 +34,8 @@ body {
 }
 
 .peText {
-  margin-top: 10pt
+  padding-top: 10pt;
+  width: 60%;
+  margin: auto;
 }
   
