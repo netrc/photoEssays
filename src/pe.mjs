@@ -100,7 +100,10 @@ const peSidePic = (s,l) => { return s }  // like pePhoto, but with immedate text
 
 const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peEndTitle }
 
-const peParse = lArray => {
+const peParse = peText => {
+  const lArray = peText.replace(/_peComment.*_peCommentEnd??/sg,'').split('\n').map(s => s.trim())
+  // ?? find first (non-greedy) comment end;  s - dot includes newlines
+
   let s = new PEstate()
 
   lArray.forEach( l => {
@@ -127,7 +130,7 @@ const peInit = async (peFile, divTag) => {
   const headers = {'Content-Type': 'text/plain'}
   const peText = await fetch(peFile, { headers } ).then( r => r.text() ).catch(`can't fetch ${peFile}`)
 
-  const peLines = peText.split('\n').map(s => s.trim())
+  const peLines = peText
   const peParsed = peParse(peLines)
   divEl.innerHTML = peParsed.html
 
