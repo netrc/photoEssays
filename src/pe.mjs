@@ -100,10 +100,11 @@ const peSidePic = (s,l) => { return s }  // like pePhoto, but with immedate text
 
 const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peEndTitle }
 
-const peParse = peText => {
-  const lArray = peText.replace(/_peComment.*_peCommentEnd??/sg,'').split('\n').map(s => s.trim())
-  // ?? find first (non-greedy) comment end;  s - dot includes newlines
+const removeComments = s => s.replace(/_peComment.*?_peCommentEnd/sg,'')
+  // ? find first (non-greedy) comment end;  s - dot includes newlines
 
+const peParse = peText => {
+  const lArray = removeComments(peText).split('\n').map(s => s.trim())
   let s = new PEstate()
 
   lArray.forEach( l => {
