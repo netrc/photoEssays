@@ -31,3 +31,16 @@ strs.forEach( t => {
     console.log('error: ',ta)
   }
 })
+
+const parts = s => s.trim().match(/"(\\"|[^"])*"|[^ "]+/g)
+
+a = [
+  'simple',
+  'simp "quote two"',
+  'should have \"quotes around this\" end',
+  'should have \"quotes around this\" but should have this "too"',
+  'should have \"quotes around this\" and "quotes here" but ends in a "',
+'p1.jpg "Scene of action, Arrass" p2.jpg "Lt. Col. Lloyd Hamilton, RAF; 1918" p3.jpg  "some more text"'
+]
+a.forEach( s => console.log(parts(s)) )
+
