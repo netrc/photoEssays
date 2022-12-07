@@ -94,8 +94,15 @@ const pePhoto = (s,l) => {
   return s
 }
 
+const pePhotoThumbs = (s,l) => {   // _pePhotoThumbs   p1.jpg ??short captio?? p2.jpg short caption
+  const p = l.split(/\s+/)[1]
+  let h = '<div>'
+  h += `<img src="${s.url}/${p}" height=180px />`
+  h += '</div>'
+  s.html += h
+  return s 
+}
 
-const pePhotoThumbs = (s,l) => { return s }  // _pePhotoThumbs   p1.jpg ??short captio?? p2.jpg short caption
 const pePhotoCarousel = (s,l) => { return s }
 const peSidePic = (s,l) => { return s }  // like pePhoto, but with immedate text the side text, rest of line is pic caption
 
