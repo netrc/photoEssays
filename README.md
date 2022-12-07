@@ -8,10 +8,14 @@ src/
 * for shared styles, js, etc
 * includes index.html template
 
-tools/
+dev/
 * aws script to push files to s3 photoEssays bucket
 
 
 
-dev notes
+## dev notes
 * github pages, from main (classic)
+
+## Helpful sites
+* https://edwardtufte.github.io/tufte-css/
+
