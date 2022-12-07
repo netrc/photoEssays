@@ -54,8 +54,9 @@ const peText_finalize = s => {
     return s
   }
   // else it is normal text
-  let h = '<div class="peText">\n'  
-  h += s.text.join('\n')
+  let h = '<div class="peText">\n' 
+  const mtext = s.text.join('\n')
+  h += window.marked.parse(mtext)
   h += '\n</div>\n\n'
   s.finalize = null
   //console.log('pet final: ', s)  
