@@ -32,7 +32,7 @@ strs.forEach( t => {
   }
 })
 
-const parts = s => s.trim().match(/"(\\"|[^"])*"|[^ "]+/g)
+const parts = s => s.trim().match(/"(\\"|[^"])*"|[^ "]+/g).map( x => (x[0]=='"' && x[x.length-1]=='"')? x.slice(1,x.length-1): x)
 
 a = [
   'simple',
@@ -43,4 +43,7 @@ a = [
 'p1.jpg "Scene of action, Arrass" p2.jpg "Lt. Col. Lloyd Hamilton, RAF; 1918" p3.jpg  "some more text"'
 ]
 a.forEach( s => console.log(parts(s)) )
+
+b='20221112_114711.jpg "Holy of Holies" 20221112_114824.jpg "Teammates Forever" 20221112_113503.jpg "Tigers"'
+console.log(parts(b))
 

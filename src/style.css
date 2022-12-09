@@ -43,5 +43,12 @@ body {
   width: 60%;
   margin: auto;
   color: #111;
+  display: flex;
+}
+
+.peThumb {
+  /*display: flex;*/
+  padding: 10px;
+  font-style: italic;
 }
   

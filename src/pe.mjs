@@ -94,10 +94,17 @@ const pePhoto = (s,l) => {
   return s
 }
 
+const qparts = s => s.trim().match(/"(\\"|[^"])*"|[^ "]+/g).map( x => (x[0]=='"' && x[x.length-1]=='"')? x.slice(1,x.length-1): x)
+const xr = (n=10) => [...(new Array(n)).keys()]
+
 const pePhotoThumbs = (s,l) => {   // _pePhotoThumbs   p1.jpg ??short captio?? p2.jpg short caption
-  const p = l.split(/\s+/)[1]
-  let h = '<div>'
-  h += `<img src="${s.url}/${p}" height=180px />`
+  const lqs = qparts(l).slice(1)
+  const pArray = xr(lqs.length/2).map( i => [ lqs[i*2],lqs[i*2+1] ])
+
+  let h = '<div class="peText">'
+  pArray.forEach( p => {
+    h += `<div class="peThumb"> <img src="${s.url}/${p[0]}" height=180px /> <br> ${p[1]} </div>`
+  })
   h += '</div>'
   s.html += h
   return s 
