@@ -53,6 +53,11 @@ const peText_finalize = s => {
     s.s2 = null
     return s
   }
+  if (s.s2 == 'getSidePicText') {
+    s = peSidePic_finalize(s)
+    s.s2 = null
+    return s
+  }
   // else it is normal text
   let h = '<div class="peText">\n' 
   const mtext = s.text.join('\n')
@@ -94,6 +99,31 @@ const pePhoto = (s,l) => {
   return s
 }
 
+const peSidePic = (s,l) => { 
+  s.sidePic = l.split(/\s+/)[1]
+  s.s2 = 'getSidePicText'
+  console.log('found sidepic: ', s.sidePic)
+  return s
+}  // like pePhoto, but with immedate text the side text, rest of line is pic caption
+
+const peSidePic_finalize = s => {
+  console.log('side pic finalize')
+  let h = '<div class="peText">\n'
+  h += '  <div style="50%">\n'
+  const mtext = s.text.join('\n')
+  h += window.marked.parse(mtext)
+  h += '\n  </div>\n'
+  h += '  <div style="50%">\n'
+  h += `   <img src="${s.url}/${s.sidePic}" style="width: 300px" />\n`
+  h += '  </div>\n'
+  h += '</div>'
+  s.html += h
+  s.text = ''
+  s.sidePic = ''
+  s.state = 'ended'
+  return s
+}
+
 const qparts = s => s.trim().match(/"(\\"|[^"])*"|[^ "]+/g).map( x => (x[0]=='"' && x[x.length-1]=='"')? x.slice(1,x.length-1): x)
 const xr = (n=10) => [...(new Array(n)).keys()]
 
@@ -111,7 +141,6 @@ const pePhotoThumbs = (s,l) => {   // _pePhotoThumbs   p1.jpg ??short captio?? p
 }
 
 const pePhotoCarousel = (s,l) => { return s }
-const peSidePic = (s,l) => { return s }  // like pePhoto, but with immedate text the side text, rest of line is pic caption
 
 const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peEndTitle }
 
@@ -135,6 +164,7 @@ const peParse = peText => {
     } else {
       f = 'peText'
     }
+    console.log('doing ',f,l)
     s = peFuncs[f](s,l) // run the function
   })
   return s
