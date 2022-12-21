@@ -99,6 +99,17 @@ const pePhoto = (s,l) => {
   return s
 }
 
+const peIframe = (s,l) => { 
+  console.log('peIframe: ',l)
+  const p = l.split(/\s+/)[1]
+  const W = '640'
+  const H = '480'
+  const h = `<div class="peText" style="justify-content: center;"> <iframe  src="${p}" width="${W}" height="${H}"></iframe> </div>\n`
+  s.html += h
+  return s
+}
+
+
 const peSidePic = (s,l) => { 
   s.sidePic = l.split(/\s+/)[1]
   s.s2 = 'getSidePicText'
@@ -142,7 +153,7 @@ const pePhotoThumbs = (s,l) => {   // _pePhotoThumbs   p1.jpg ??short captio?? p
 
 const pePhotoCarousel = (s,l) => { return s }
 
-const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peEndTitle }
+const peFuncs = { peEndState, peTitle, peText, pePhoto, pePhotoThumbs, pePhotoCarousel, peSidePic, peIframe, peEndTitle }
 
 const removeComments = s => s.replace(/_peComment.*?_peCommentEnd/sg,'')
   // ? find first (non-greedy) comment end;  s - dot includes newlines
